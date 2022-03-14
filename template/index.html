@@ -16,21 +16,135 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
 
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
+
+
+
+
 
 <!-- *************************************************CSS-END*************************************************************** -->
 
 <section class="product_section layout_padding">
-  <div class="container">
-     <div class="heading_container heading_center">
-        <h2>
-           Our <span>products</span>
-        </h2>
-     </div>
+   <!-- <div class="row">
+   {% for category in categories %}
+        <div class="container shoe" style="float: left; width: 20%;">
+         <div class="productImage shoeImg">
+            <img src="{{category.image.url}}" alt="">
+         </div>
+         
+         <div class="productName shoeName">
+           {{category.name}}
+         </div>
+       </div>
+       <div class = "category">
+         <img src="{{category.image.url}}" alt="">
+         <a href="?category={{category.id}}" class="list-group-item 
+            list-group-item-action">{{category.name}}</a>
+      </div>
+       {% endfor %}
+      </div> -->
+  
+      <div class="heading_container heading_center">
+         <h2>
+            Our <span>products</span>
+         </h2>      
+      </div><br><br>
 
+
+
+
+      <div class="container" >
+
+<!-- category and search -->
+
+         <div class="row">
+
+            <table>
+            <tr>
+               <td >
+         
+               <!-- Filter -->
+               <!-- <div class="btn-box">
+                  
+               <a href="{% url 'index' %}" class="list-group-item 
+               list-group-item-action" style="padding: 50px">All</a>
+               {% for category in categories %}
+               <td>
+                  <a href="?category={{category.id}}">
+               <img src="{{category.image.url}}" alt=""></a>
+               <a  href="?category={{category.id}}" style="padding: 50px" class="list-group-item 
+               list-group-item-action">{{category.name}}</a></td>
+               {% endfor %}
+                </div> -->
+
+
+
+                
+                  <div class="btn-box">
+                    <a href="{% url 'index' %}" class="list-group-item 
+                    list-group-item-action">View All products</a>&emsp;
+                    {% for category in categories %}
+                    <a style="padding: 30px 40px;" href="?category={{category.id}}" class="list-group-item 
+                    list-group-item-action">{{category.name}}</a>&emsp;
+                    {% endfor %}
+                  </div>
+                
+
+
+               <!-- Filter stop -->
+         
+               </td>
+               <td style="color: black;">
+                  &emsp;&emsp;&emsp;&emsp;&emsp;
+               </td>
+               <td style="border-spacing: 30px;">
+         
+                  <div class="container h-100">
+                     <div class="d-flex justify-content-center h-100">
+                       <div class="searchbar">
+                         <input class="search_input" type="text" name="" placeholder="Search...">
+                         <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                       </div>
+                     </div>
+                   </div>
+                  
+               </td>
+               
+            </tr>
+         </table>
+            
+         </div>
+         <br>
+<!-- End category and search -->
      
+<br>
+
 <div id ="row">
+<!-- Filter -->
+      <!-- <div class='col-lg-2 mx-auto'>
+        <div class="btn-box">
+          <a href="/" class="list-group-item 
+          list-group-item-action">All</a>
+          {% for category in categories %}
+          <a href="/?category={{category.id}}" class="list-group-item 
+          list-group-item-action">{{category.name}}</a>
+          {% endfor %}
+        </div>
+        <div class="btn-box">
+         <a href="">
+         View All products
+         </a>
+      </div>
+      </div> -->
+<!-- Filter-End -->
+
+<!-- Product Side -->
+
    <div id ='products'>
       <div class="row mx-auto">
+
+
          {% for product in products %}
            <div class="col-sm-6 col-md-4 col-lg-3">
               <div class="box">
@@ -67,10 +181,11 @@
                    <img src="{{product.image.url}}" alt="">
                  </div>
                  <div class="info">
+                    <br>
                    <h2>{{product.name}}<br><span>{{product.category}}</span></h2>
                    <p>{{product.description}}</p>
                    <br>
-                   <span class="price">₹ {{product.price}}</span>
+                   <span class="price">₹ {{product.price}}</span><br><br><br><br><br>
                    <a href="#" class="add-cart-btn">Add to Cart</a>
                    <!-- <a href="#" class="add-wish">Add to Wishlist</a> -->
                  </div>
@@ -85,18 +200,9 @@
 
 </div>
            
-
-
-
 <!-- *********************************** -->
+    
 
-
-     
-     <div class="btn-box">
-        <a href="">
-        View All products
-        </a>
-     </div>
   </div>
 </section>
 
