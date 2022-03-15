@@ -3,7 +3,7 @@ from django.contrib.auth.hashers import make_password, check_password
 from .models.category import Category
 from .models.customer import Customer
 from .models.product import Product
-
+from django.views import View
 
 def validateCustomer(customer):
     error_message = None
@@ -52,7 +52,7 @@ def registerUser(request):
             customer.password = make_password(customer.password)
 
             customer.register()
-            return redirect('index')
+            return redirect('login')
         else:
             data = {
                 'error': error_message,
@@ -71,7 +71,6 @@ def signup(request):
 def website(request):
     return render(request, 'website.html')
 
-
 def index(request):
     products = None
     categories = Category.get_all_categories()
@@ -85,3 +84,28 @@ def index(request):
     data['products'] = products
     data['categories'] = categories
     return render(request, 'index.html', data)
+
+
+
+def login(request):
+    if request.method == 'GET':
+        return render(request, 'login.html')
+    else:
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        customer = Customer.get_customer_by_email(email)
+# ******************************* Check Password
+        error_message = None
+        if customer:
+            flag = check_password(password, customer.password)
+            if flag:
+                request.session['customer'] = customer.id
+                request.session['email'] = email
+                return redirect('index')
+            else:
+                error_message = "Invalid Email or Password"
+        else:
+            error_message = "Invalid Email or Password"
+
+        return render(request, 'login.html', {'error' : error_message})
+
