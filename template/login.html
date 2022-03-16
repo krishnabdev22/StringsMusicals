@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link href="{% static 'assets/css/loginstyle.css' %}" rel="stylesheet" />
+
+
+<div class="container" onclick="onclick">
+  <div class="top"></div>
+  <div class="bottom"></div>
+  <div class="center">
+    <h2>Please Login Here</h2>
+
+      <form action="/login" method="POST">
+
+
+                {% csrf_token %}
+
+                {% if error %}
+                <div class="alert alert-danger" role="alert">
+                  {{error}}
+                </div>
+                {% endif %}
+
+                    <!--email-->
+                <input required type="email"
+                name="email" id="" placeholder="example@email.com">
+
+                    <!--password-->
+                    <input type="password"
+                    name="password" id="" placeholder="********">
+
+                    <div class="form-group mt-3">
+                        <input class="btn btn-sm btn-info" type="submit" value="Login">
+                    </div>
+
+
+            </form>
+
+    <h2>&nbsp;</h2>
+  </div>
+</div>
+
+
+{% endblock %}
