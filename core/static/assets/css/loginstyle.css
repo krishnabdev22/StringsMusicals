@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   box-sizing: border-box;
 }
 
@@ -16,11 +14,7 @@ body {
   height: 100%;
   overflow: hidden;
 }
-.container:hover .top:before, .container:hover .top:after,
-.container:hover .bottom:before,
-.container:hover .bottom:after, .container:active .top:before, .container:active .top:after,
-.container:active .bottom:before,
-.container:active .bottom:after {
+.container:hover .top:before, .container:hover .top:after, .container:hover .bottom:before, .container:hover .bottom:after, .container:active .top:before, .container:active .top:after, .container:active .bottom:before, .container:active .bottom:after {
   margin-left: 200px;
   transform-origin: -200px 50%;
   transition-delay: 0s;
@@ -30,9 +24,7 @@ body {
   transition-delay: 0.2s;
 }
 
-.top:before, .top:after,
-.bottom:before,
-.bottom:after {
+.top:before, .top:after, .bottom:before, .bottom:after {
   content: "";
   display: block;
   position: absolute;
@@ -51,6 +43,7 @@ body {
 .top:before {
   transform: rotate(45deg);
   background: #e46569;
+  /* background-image: url('../images/hero-bg/vio1.jpg'); */
 }
 .top:after {
   transform: rotate(135deg);
