@@ -56,7 +56,7 @@ ROOT_URLCONF = 'Musicals.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'template')],
+        'DIRS': [os.path.join(BASE_DIR,'core/git merge tmptemplate')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
