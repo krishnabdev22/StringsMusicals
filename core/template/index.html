@@ -147,19 +147,76 @@
 
 
          {% for product in products %}
-           <div class="col-sm-6 col-md-4 col-lg-3">
+           <div class="col-sm-6 col-md-4 col-lg-3" id="{{product.id}}">
               <div class="box">
                  <div class="option_container">
                     <div class="options">
                      <p style="color: aliceblue;"><b>
                         {{product.description}}</b>
                        </p>
-                       <a href="" class="option1">
+                       <!-- <a href="" class="option1">
                        Add To Cart
-                       </a>
+                       </a> -->
                        <a class="popup-btn" >
                        Quick View
                        </a>
+                                            
+            <!-- ************************Add to Cart************************************* -->
+            <div class="card-footer p-0 no-gutters">
+               
+               {% if product|is_in_cart:request.session.cart %}
+               <div >
+                  <table>
+                     <tr>
+                        <td>
+                 
+                 <form action="?category={{category.id}}/#{{product.id}}" class="col-2" method="post">
+                   {% csrf_token %}
+                   <input hidden type="text" name='product' 
+                   value="{{product.id}}">
+                   <input hidden type="text" name='remove' 
+                   value="True">
+
+                   <input type="submit" value="-">
+                 </form>
+               </td>
+            
+               <!-- <td>
+               
+             
+                 <div>{{product|cart_quantity:request.session.cart}} in cart</div>
+               </td> -->
+               <td>
+                 <form action="?category={{category.id}}/#{{product.id}}" class="col-2" method="post">
+                   {% csrf_token %}
+                   <input hidden type="text" name='product' 
+                   value="{{product.id}}">
+                   <input type="submit" value="+">
+                 </form>
+               </td>
+
+               </tr>
+            </table>
+             
+               </div>
+                
+   
+               {% else %}
+               <form action="?category={{category.id}}/#{{product.id}}" method="POST" class="btn-block">
+                 {% csrf_token %}
+                 <input hidden type="text" name='product' value="{{product.id}}">
+               <input type="submit" class="btn btn-primary border  form-control" 
+               value = "Add to Cart">
+   
+               </form>
+               {% endif %}   
+                     
+             </div>
+            <!-- ************************************************************************ -->
+
+
+
+
                     </div>
                  </div>
                  <div class="img-box">
@@ -197,25 +254,18 @@
 
             <!-- ************************Add to Cart************************************* -->
             <div class="card-footer p-0 no-gutters">
-                
+               
                {% if product|is_in_cart:request.session.cart %}
-               <div class="row no-gutters">
-                 <form action="?category={{category.id}}/#{{product.id}}" class="col-2" method="post">
-                   {% csrf_token %}
-                   <input hidden type="text" name='product' 
-                   value="{{product.id}}">
-                   <input hidden type="text" name='remove' 
-                   value="True">
-                   <input type="submit" value=" - " class="btn btn-block btn-secondary">
-                 </form>
-                 <div class="text-center col">{{product|cart_quantity:request.session.cart}} in cart</div>
-                 <form action="?category={{category.id}}/#{{product.id}}" class="col-2" method="post">
-                   {% csrf_token %}
-                   <input hidden type="text" name='product' 
-                   value="{{product.id}}">
-                   <input type="submit" value=" + " class="btn btn-block btn-secondary">
-                 </form>
-               </div>
+               
+                  <table>
+                     <tr>
+                     <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;</td>
+                     <td>
+                 <h4 style="align:center">{{product|cart_quantity:request.session.cart}} in cart</h4>
+               </td>
+            </tr>
+                  </table>
+              
    
                {% else %}
                <form action="?category={{category.id}}/#{{product.id}}" method="POST" class="btn-block">
@@ -225,7 +275,8 @@
                value = "Add to Cart">
    
                </form>
-               {% endif %}              
+               {% endif %}   
+                     
              </div>
             <!-- ************************************************************************ -->
 

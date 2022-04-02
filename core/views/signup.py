@@ -14,6 +14,7 @@ class Signup(View):
         phone = postData.get('phone')
         email = postData.get('email')
         password = postData.get('password')
+        confirm_password = postData.get('confirm_password')
         # Holding Values
         value = {
             'first_name': first_name,
@@ -26,12 +27,14 @@ class Signup(View):
                             last_name=last_name,
                             phone=phone,
                             email=email,
-                            password=password)
+                            password=password,
+                            confirm_password = confirm_password)
         error_message = self.validateCustomer(customer)
         # Saving
         if not error_message:
 
             customer.password = make_password(customer.password)
+            customer.confirm_password = make_password(customer.confirm_password)
 
             customer.register()
             return redirect('login')
@@ -59,6 +62,8 @@ class Signup(View):
             error_message = "Enter Your Password"
         elif len(customer.password) < 4:
             error_message = "Password atleast Need 4 character/numbers"
+        elif(customer.password != customer.confirm_password):
+            error_message = "Passwords Not Same"
         elif customer.isExists():
             error_message = "Email Already Exists"
         return error_message
