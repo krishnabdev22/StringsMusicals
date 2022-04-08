@@ -27,25 +27,7 @@
 <!-- *************************************************CSS-END*************************************************************** -->
 
 <section class="product_section layout_padding">
-   <!-- <div class="row">
-   {% for category in categories %}
-        <div class="container shoe" style="float: left; width: 20%;">
-         <div class="productImage shoeImg">
-            <img src="{{category.image.url}}" alt="">
-         </div>
-         
-         <div class="productName shoeName">
-           {{category.name}}
-         </div>
-       </div>
-       <div class = "category">
-         <img src="{{category.image.url}}" alt="">
-         <a href="?category={{category.id}}" class="list-group-item 
-            list-group-item-action">{{category.name}}</a>
-      </div>
-       {% endfor %}
-      </div> -->
-  
+
       <div class="heading_container heading_center">
          <h2>
             Our <span>products</span>
@@ -65,19 +47,7 @@
             <tr>
                <td >
          
-               <!-- Filter -->
-               <!-- <div class="btn-box">
-                  
-               <a href="{% url 'index' %}" class="list-group-item 
-               list-group-item-action" style="padding: 50px">All</a>
-               {% for category in categories %}
-               <td>
-                  <a href="?category={{category.id}}">
-               <img src="{{category.image.url}}" alt=""></a>
-               <a  href="?category={{category.id}}" style="padding: 50px" class="list-group-item 
-               list-group-item-action">{{category.name}}</a></td>
-               {% endfor %}
-                </div> -->
+         
 
 
 
@@ -122,23 +92,7 @@
 <br>
 
 <div id ="row">
-<!-- Filter -->
-      <!-- <div class='col-lg-2 mx-auto'>
-        <div class="btn-box">
-          <a href="/" class="list-group-item 
-          list-group-item-action">All</a>
-          {% for category in categories %}
-          <a href="/?category={{category.id}}" class="list-group-item 
-          list-group-item-action">{{category.name}}</a>
-          {% endfor %}
-        </div>
-        <div class="btn-box">
-         <a href="">
-         View All products
-         </a>
-      </div>
-      </div> -->
-<!-- Filter-End -->
+
 
 <!-- Product Side -->
 
@@ -244,8 +198,72 @@
                    <p>{{product.description}}</p>
                    <br>
                    <span class="price">₹ {{product.price}}</span><br><br><br><br><br>
-                   <a href="#" class="add-cart-btn">Add to Cart</a>
-                   <!-- <a href="#" class="add-wish">Add to Wishlist</a> -->
+
+
+<!-- Add to Cart in popup -->
+                   <div class="card-footer p-0 no-gutters">
+               
+                     {% if product|is_in_cart:request.session.cart %}
+               <div >
+                  <table>
+                     <tr>
+                        <td>
+                 
+                 <form action="?category={{category.id}}/#{{product.id}}" class="col-2" method="post">
+                   {% csrf_token %}
+                   <input hidden type="text" name='product' 
+                   value="{{product.id}}">
+                   <input hidden type="text" name='remove' 
+                   value="True">
+               
+                   <input type="submit" value="-">
+                 </form>
+               </td>
+            
+               <td>
+                  
+                 <form action="?category={{category.id}}/#{{product.id}}" class="col-2" method="post">
+                   {% csrf_token %}
+                   <input hidden type="text" name='product' 
+                   value="{{product.id}}">
+                   <input type="submit" value="+">
+                 </form>
+               </td>
+
+               </tr>
+            </table>
+             
+               </div>
+         
+                     {% else %}
+                     <form action="?category={{category.id}}/#{{product.id}}" method="POST" class="btn-block">
+                       {% csrf_token %}
+                       <input hidden type="text" name='product' value="{{product.id}}">
+                     <input type="submit" class="btn btn-primary border  form-control" 
+                     value = "Add to Cart">
+         
+                     </form>
+                     {% endif %} 
+                     <br>
+
+                     {% if product|is_in_cart:request.session.cart %}
+               
+                     <table>
+                        <tr>
+                        <td>&emsp;&emsp;&emsp;&emsp;</td>
+                        <td>
+                    <h4 style="align:center">{{product|cart_quantity:request.session.cart}} in cart</h4>
+                  </td>
+               </tr>
+                     </table>
+                  {% endif %}   
+<!-- Add to cart End in popuo -->
+
+                           
+                   </div>
+
+
+                   
                  </div>
                </div>
              </div>
