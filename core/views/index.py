@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from ..models.category import Category
 from ..models.product import Product
 from ..models.customer import Customer
-
 from django.views import View
 
 

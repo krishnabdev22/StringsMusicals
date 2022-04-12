@@ -17,6 +17,7 @@ class Login(View):
         if customer:
             flag = check_password(password, customer.password)
             if flag:
+                print(customer)
                 request.session['customer'] = customer.id
                 request.session['email'] = email
                 return redirect('index')
