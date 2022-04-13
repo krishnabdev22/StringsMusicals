@@ -156,13 +156,13 @@
                 
    
                {% else %}
-               <form action="?category={{category.id}}/#{{product.id}}" method="POST" class="btn-block">
+               <!-- <form action="?category={{category.id}}/#{{product.id}}" method="POST" class="btn-block">
                  {% csrf_token %}
                  <input hidden type="text" name='product' value="{{product.id}}">
                <input type="submit" class="btn btn-primary border  form-control" 
                value = "Add to Cart">
    
-               </form>
+               </form> -->
                {% endif %}   
                      
              </div>
@@ -253,11 +253,12 @@
                         <td>&emsp;&emsp;&emsp;&emsp;</td>
                         <td>
                     <h4 style="align:center">{{product|cart_quantity:request.session.cart}} in cart</h4>
+                    
                   </td>
                </tr>
                      </table>
                   {% endif %}   
-<!-- Add to cart End in popuo -->
+<!-- Add to cart End in popup -->
 
                            
                    </div>
@@ -276,10 +277,15 @@
                {% if product|is_in_cart:request.session.cart %}
                
                   <table>
+                     <br>
                      <tr>
-                     <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;</td>
+                     <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;</td>
                      <td>
-                 <h4 style="align:center">{{product|cart_quantity:request.session.cart}} in cart</h4>
+                 <!-- <h4 style="align:center">{{product|cart_quantity:request.session.cart}} in cart</h4> -->
+                 <i class="fas fa fa-shopping-cart fa-lg"></i>
+              <span class="cart-basket d-flex align-items-center justify-content-center">
+               {{product|cart_quantity:request.session.cart}}
+              </span>
                </td>
             </tr>
                   </table>
