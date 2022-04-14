@@ -123,6 +123,14 @@ cursor: pointer;
                 </div>
                 {% endif %}
 
+                {% if messages %}
+                <div class="alert alert-success" role="alert">
+                    {% for message in messages %}
+                    {{ message }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                     <!--email-->
                 <input required type="email"
                 name="email" id="" placeholder="example@email.com">

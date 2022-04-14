@@ -7,8 +7,8 @@ class Customer(models.Model):
     email = models.EmailField()
     password = models.CharField(max_length=500)
     confirm_password = models.CharField(max_length=500,null=True)
-    # otp = models.IntegerField(null=True)
-    # otp_verified = models.BooleanField(default=False)
+    otp = models.IntegerField(null=True)
+    otp_verified = models.BooleanField(default=False)
 
     def register(self):
         self.save()

@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password
 from ..models.customer import Customer
 from django.views import View
+import random
+from ..utils import send_sms
 
 
 class Signup(View):
@@ -15,6 +17,8 @@ class Signup(View):
         email = postData.get('email')
         password = postData.get('password')
         confirm_password = postData.get('confirm_password')
+        otp = random.randrange(100000, 999999)
+
         # Holding Values
         value = {
             'first_name': first_name,
@@ -28,7 +32,8 @@ class Signup(View):
                             phone=phone,
                             email=email,
                             password=password,
-                            confirm_password = confirm_password)
+                            confirm_password = confirm_password,
+                            otp = otp)
         error_message = self.validateCustomer(customer)
         # Saving
         if not error_message:
@@ -37,7 +42,15 @@ class Signup(View):
             customer.confirm_password = make_password(customer.confirm_password)
 
             customer.register()
-            return redirect('login')
+
+            if phone:
+                print("-----------------------------------------------------------------", phone)
+                send_sms(otp, phone)
+                # request.session['pk'] = user.pk
+                return redirect('otpVerify_url', email)
+
+
+            # return redirect('login')
         else:
             data = {
                 'error': error_message,

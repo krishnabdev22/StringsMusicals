@@ -14,18 +14,22 @@ class Login(View):
         customer = Customer.get_customer_by_email(email)
         # ******************************* Check Password
         error_message = None
-        if customer:
-            flag = check_password(password, customer.password)
-            if flag:
-                print(customer)
-                request.session['customer'] = customer.id
-                request.session['email'] = email
-                return redirect('index')
+        if customer.otp_verified:
+            if customer:
+                flag = check_password(password, customer.password)
+                if flag:
+                    print(customer)
+                    request.session['customer'] = customer.id
+                    request.session['email'] = email
+                    return redirect('index')
+                else:
+                    error_message = "Invalid Email or Password"
             else:
                 error_message = "Invalid Email or Password"
         else:
-            error_message = "Invalid Email or Password"
-
+            print("hello my userrrrrrrrrrrr")
+            error_message = "Not verified"
+        print(email, password)
         return render(request, 'login.html', {'error': error_message})
 
 def logout(request):

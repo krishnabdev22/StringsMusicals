@@ -49,7 +49,19 @@
            <a class="navbar-brand" href="#"><img src="assets/images/logo.png" alt=""></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navigation-nav">
+        <div class="collapse navbar-collapse" id="navigation-nav"> 
+          <ul class="nav navbar-nav navbar-left">
+            <!-- <a href="https://ibb.co/M6r7PT0"><img src="https://i.ibb.co/M6r7PT0/sm-Logo.png" alt="sm-Logo" border="0" width="100" height="60"></a> -->
+            {% if request.session.customer %}
+            
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/" >
+                Hello,&nbsp;<b>{{username}}</b>
+              </a>
+            </li>
+            {% endif %} 
+
+          </ul>       
           <ul class="nav navbar-nav navbar-right">
             <li><a class="section-scroll" href="{% url 'website' %}#wrapper">Home</a></li>
             <li><a href="{% url 'website' %}#landing-offer">About</a></li>
@@ -57,7 +69,7 @@
             <li><a href="{% url 'website' %}#team-section">Team</a></li>
             <!-- <li><a href="#screenshots-section">Works</a></li> -->
             <li class="active"><a href="{% url 'index' %}" target="_blank">Shop</a></li>
-            <li><a href="{% url 'website' %}#prices-section   ">Prices</a></li>
+            <!-- <li><a href="{% url 'website' %}#prices-section   ">Prices</a></li> -->
             <li><a href="{% url 'website' %}#subscribe-section">Subscribe</a></li>
             <li><a href="{% url 'website' %}#contact-section">Contact</a></li>
             {% if request.session.customer %}
