@@ -66,24 +66,25 @@
             <li><a class="section-scroll" href="{% url 'website' %}#wrapper">Home</a></li>
             <li><a href="{% url 'website' %}#landing-offer">About</a></li>
             <li><a href="{% url 'website' %}#features-section">Services</a></li>
-            <li><a href="{% url 'website' %}#team-section">Team</a></li>
+            <!-- <li><a href="{% url 'website' %}#team-section">Team</a></li> -->
             <!-- <li><a href="#screenshots-section">Works</a></li> -->
             <li class="active"><a href="{% url 'index' %}" target="_blank">Shop</a></li>
             <!-- <li><a href="{% url 'website' %}#prices-section   ">Prices</a></li> -->
-            <li><a href="{% url 'website' %}#subscribe-section">Subscribe</a></li>
-            <li><a href="{% url 'website' %}#contact-section">Contact</a></li>
+            <!-- <li><a href="{% url 'website' %}#subscribe-section">Subscribe</a></li> -->
+            <!-- <li><a href="{% url 'website' %}#contact-section">Contact</a></li> -->
             {% if request.session.customer %}
             <li><a href="{% url 'cart' %}" target="_blank">Cart
               <i class="fas fa fa-shopping-cart fa-lg"></i>
               <span class="cart-basket d-flex align-items-center justify-content-center">
                 {{request.session.cart.keys|length}}
               </span>
-
             </a></li>
-            
+            <li><a href="{% url 'website' %}#testimonials-section">Testimonials</a></li>
+            <li><a id="exampleModalLabel" href="{% url 'website' %}#contact-section">Feedback</a></li>
             <li><a href="{% url 'orders' %}" >Orders</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
+            <li><a href="{% url 'website' %}#testimonials-section">Testimonials</a></li>
             <li><a href="{% url 'login' %}" target="_blank">My Cart
               <i class="fas fa fa-shopping-cart fa-lg"></i>
             </a></li>
@@ -94,10 +95,62 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
     </nav>
+                <!-- FeedBack Modal -->  
+                <!-- <form method="POST" action="#" >
+                  {% csrf_token %}
+      
+                <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" style="color: black;" id="exampleModalLabel">Feedback</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+      
+      
+                        <div style="color: black;" class="form-group mt-3">
+                          <label for="">Name</label>
+                          <input required type="text" name="name" id="" class="form-control mt-2" 
+                            placeholder="" value="{{username}}" aria-describedby="helpId">
+                        </div>
+      
+      
+                      <div style="color: black;" class="form-group mt-3">
+                        <label for="">email</label>
+                        <input required type="email" name="email" id="" class="form-control mt-2" 
+                          placeholder="example@email.com" aria-describedby="helpId">
+                      </div>
+      
+                      <div style="color: black;" class="form-group mt-3">
+                          <label for="">Message</label>
+                          <textarea rows="7" required type="text" name="feed" id="" class="form-control mt-2" 
+                            placeholder="Please enter your valuable feedback" aria-describedby="helpId"></textarea>
+                        </div>
+                      
+                        ...
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      
+                        <button type="submit" class="btn btn-primary" >Sent Feedback</button>
+                        
+                      
+                      </div>
+      
+      
+                    </div>
+                  </div>
+                </div>
+                </form>
+                Close FeedBackModel -->
   </header>
+
 
   {% block content %}
   {% endblock %}
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
 
 
   <!-- JS libraries and scripts -->

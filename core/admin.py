@@ -3,6 +3,7 @@ from .models.product import Product
 from .models.category import Category
 from .models.customer import Customer
 from .models.orders import Order
+from .models.feedback import Feedback
 # Register your models here.
 
 class AdminProduct(admin.ModelAdmin):
@@ -17,8 +18,12 @@ class AdminCustomer(admin.ModelAdmin):
 class AdminOrder(admin.ModelAdmin):
     list_display = ["date", "customer", "phone", "product", "status"]
 
+class AdminFeedback(admin.ModelAdmin):
+    list_display = ["name" , "email"]
+
 
 admin.site.register(Product, AdminProduct)
 admin.site.register(Category, AdminCategory)
 admin.site.register(Customer, AdminCustomer)
 admin.site.register(Order, AdminOrder)
+admin.site.register(Feedback, AdminFeedback)

@@ -2,6 +2,65 @@
 {% block content %}
 {% load static %}
 
+<style>
+  .alert {
+padding: 20px;
+background-color: #f44336;
+color: white;
+opacity: 1;
+transition: opacity 0.6s;
+margin-bottom: 15px;
+}
+
+.alert.success {background-color: #04AA6D;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+margin-left: 15px;
+color: white;
+font-weight: bold;
+float: right;
+font-size: 22px;
+line-height: 20px;
+cursor: pointer;
+transition: 0.3s;
+}
+
+.closebtn:hover {
+color: black;
+}
+
+
+
+
+
+</style>
+
+<script>
+  var close = document.getElementsByClassName("closebtn");
+  var i;
+  
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function(){
+      var div = this.parentElement;
+      div.style.opacity = "0";
+      setTimeout(function(){ div.style.display = "none"; }, 600);
+    }
+  }
+
+
+
+  </script>
+
+{% for message in messages %}
+
+  <div class="alert success">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>  
+    <strong>{{message}}</strong> 
+  </div>
+
+{% endfor %}
 
  <!-- Shop page Product CSS  -->
   <!-- <link rel="shortcut icon" href="images/favicon.png" type=""> -->
@@ -88,7 +147,7 @@
                       <li class="caption">
                         <h1>HIGH QUALITY PRODUCTS</h1>
                         <div class="div-line"></div>
-                        <p class="hero">We provides High Quality Product Only</p>
+                        <p class="hero">We provide High Quality Product Only</p>
                       </li>
 
                     </ul>
@@ -355,87 +414,6 @@
               </div>
             </div> <!-- End row -->
           </div> <!-- end title-section -->
-
-          <div class="team-members">
-            <div class="row">
-
-              <!-- member-team -->
-              <div class="col-sm-4">
-                <div class="member-team animated out" data-animation="fadeInLeft" data-delay="0">
-                  <img src="assets/images/team/m1.jpg" alt="">
-                  <div class="magnifier">
-                    <div class="magnifier-inner">
-                      <h3>MICHAEL ROOF</h3>
-                      <p>Co_founder &amp; Designer</p>
-                      <p>We’ll etch your brand onto tangible objects: business cards, ads, stickers, brochures, you name it. You won’t see business cards, ads, stickers, brochures anything until we’re done drooling at the result.</p>
-                      <ul class="social-icons">
-
-                        <li><a data-rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" data-title="Facebook" href="#" data-original-title="" title=""><i class="fa fa-facebook"></i></a></li>
-
-                        <li><a data-rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" data-title="Twitter" href="#" data-original-title="" title=""><i class="fa fa-twitter"></i></a></li>
-
-                        <li><a data-rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" data-title="Google Plus" href="#" data-original-title="" title=""><i class="fa fa-google-plus"></i></a></li>
-
-                        <li><a data-rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" data-title="Skype" href="#" data-original-title="" title=""><i class="fa fa-skype"></i></a></li>
-
-                      </ul>
-                    </div> <!-- End magnifier-inner -->
-                  </div> <!-- End magnifier -->
-                </div> <!-- End member-team -->
-              </div> <!-- End col-sm-4 -->
-
-              <!-- member-team -->
-              <div class="col-sm-4">
-                <div class="member-team animated out" data-animation="fadeInUp" data-delay="0">
-                  <img src="assets/images/team/m2.jpg" alt="">
-                  <div class="magnifier">
-                    <div class="magnifier-inner">
-                      <h3>CHARLES WHITE</h3>
-                      <p>Co_founder &amp; Designer</p>
-                      <p>We’ll etch your brand onto tangible objects: business cards, ads, stickers, brochures, you name it. You won’t see business cards, ads, stickers, brochures anything until we’re done drooling at the result.</p>
-                      <ul class="social-icons">
-
-                        <li><a data-rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" data-title="Facebook" href="#" data-original-title="" title=""><i class="fa fa-facebook"></i></a></li>
-
-                        <li><a data-rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" data-title="Twitter" href="#" data-original-title="" title=""><i class="fa fa-twitter"></i></a></li>
-
-                        <li><a data-rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" data-title="Google Plus" href="#" data-original-title="" title=""><i class="fa fa-google-plus"></i></a></li>
-
-                        <li><a data-rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" data-title="Skype" href="#" data-original-title="" title=""><i class="fa fa-skype"></i></a></li>
-
-                      </ul>
-                    </div> <!-- End magnifier-inner -->
-                  </div> <!-- End magnifier -->
-                </div> <!-- End member-team -->
-              </div> <!-- End col-sm-4 -->
-
-              <!-- member-team -->
-              <div class="col-sm-4">
-                <div class="member-team animated out" data-animation="fadeInRight" data-delay="0">
-                  <img src="assets/images/team/m3.jpg" alt="">
-                  <div class="magnifier">
-                    <div class="magnifier-inner">
-                      <h3>MARTIN CAMBRIGE</h3>
-                      <p>Head Support</p>
-                      <p>We’ll etch your brand onto tangible objects: business cards, ads, stickers, brochures, you name it. You won’t see business cards, ads, stickers, brochures anything until we’re done drooling at the result.</p>
-                      <ul class="social-icons">
-
-                        <li><a data-rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" data-title="Facebook" href="#" data-original-title="" title=""><i class="fa fa-facebook"></i></a></li>
-
-                        <li><a data-rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" data-title="Twitter" href="#" data-original-title="" title=""><i class="fa fa-twitter"></i></a></li>
-
-                        <li><a data-rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" data-title="Google Plus" href="#" data-original-title="" title=""><i class="fa fa-google-plus"></i></a></li>
-
-                        <li><a data-rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" data-title="Skype" href="#" data-original-title="" title=""><i class="fa fa-skype"></i></a></li>
-
-                      </ul>
-                    </div> <!-- End magnifier-inner -->
-                  </div> <!-- End magnifier -->
-                </div> <!-- End member-team -->
-              </div> <!-- End col-sm-4 -->
-
-            </div>
-          </div> <!-- End team-members -->
         </div> <!-- End container -->
       </div> <!-- End team-section -->
     </section>
@@ -932,12 +910,10 @@
     </section>
     <!-- End subscribe section -->
 
-    <section>
-      <div class="sep-section"></div>
-    </section>
 
       <!-- Testimonial
-      ================================================== -->      
+      ================================================== -->   
+      
       <section>
         <div id="testimonials-section">
           <div class="container">
@@ -948,26 +924,15 @@
 
                   <ul class="testimonials-slider">
                     
-                    <!-- Testimonial -->
-                    <li>
-                      <img src="assets/images/temp/client-photo.jpg" alt="">
-                      <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculusultricies porta posuere.</p>
-                      <div class="testimonials-author"> ClasDesign - Front End Developer </div>
-                    </li>
                     
                     <!-- Testimonial -->
+                    {% for feed in feeds %}
                     <li>
                       <img src="assets/images/temp/client-photo.jpg" alt="">
-                      <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculusultricies porta posuere <a href="#">http://goo.gl/1OhxkS</a>.</p>
-                      <div class="testimonials-author">John Doe -  Web Developer</div>
+                      <p>{{feed.feed}}</p>
+                      <div class="testimonials-author"> {{feed.name}} </div>
                     </li>
-                    
-                    <!-- Testimonial -->
-                    <li>
-                      <img src="assets/images/temp/client-photo.jpg" alt="">
-                      <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculusultricies porta posuere. <a href="#">http://goo.gl/1OhxkS</a>.</p>
-                      <div class="testimonials-author">John Doe - Web Designer</div>
-                    </li>
+                    {% endfor %}
 
                   </ul>
 
@@ -1009,7 +974,7 @@
                 <div class="col-sm-8 col-sm-offset-2">
                   <h2>Get in touch</h2>
                   <hr>
-                  <p>Sed ac mattis justo. Vestibulum facilisis at arcu ac porta. Vivamus at ipsum at quam hendrerit gravida.</p>
+                  <p>We will appreciate your comments on the quality of the Sales & Services we provide</p>
               </div>
             </div> <!-- End row -->
           </div> <!-- end title-section -->
@@ -1019,25 +984,26 @@
               <div class="col-md-8 col-md-offset-2">
                 
                 <!-- form fields -->
-                <form action="assets/php/contact.php.htm" method="post" name="contactform" id="contactform" class="animated out" data-animation="fadeInUp" data-delay="0">
+                <form action="{% url 'feed' %}" method="POST" class="animated out" data-animation="fadeInUp" data-delay="0">
+                  {% csrf_token %}
 
                   <fieldset>
                     <div class="form-group">
-                      <input class="form-control br-b" type="text" name="name" id="name" placeholder="Name">
+                      <input required class="form-control br-b" type="text" name="name" id="name" placeholder="Name"  value="{{username}}">
                     </div>
 
                     <div class="form-group">
-                      <input class="form-control br-b" type="email" name="email" id="email" placeholder="Email">
+                      <input required class="form-control br-b" type="email" name="email" id="email" placeholder="Email">
                     </div>
 
                     <div class="form-group">
-                      <textarea class="form-control br-b" name="message" id="message" placeholder="Message..."></textarea>
+                      <textarea required class="form-control br-b" name="feed" id="message" placeholder="Message..."></textarea>
                     </div>
                   </fieldset>
                   
                   <!-- submit button -->
-                  <div class="form-group">
-                    <input type="submit" name="submit" value="Send message" id="submit" class="btn btn-sm btn-dark">
+                  <div>
+                    <input type="submit"  value="Send message" class="btn btn-sm btn-dark">
                   </div>
 
                   <div id="alert"></div>
