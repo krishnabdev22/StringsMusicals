@@ -190,6 +190,7 @@ p {
 }
 
 .pad-sec {
+  background: url('/Musicals/core/static/Requi/all.jpg') center top;
   padding: 100px 0!important;
 }
 
@@ -1197,7 +1198,7 @@ h6.progress-value {
 }
 
 #banner-services {
-  background: url('../images/temp/stats-bg.jpg') center top;
+  background: url('../../Requi/all.jpg') center top;
   position: relative;
   border-bottom: 1px solid transparent;
 }
@@ -1861,7 +1862,7 @@ ul.features-list li {
 ----------------------*/
 
 #video-section {
-  background: url('../images/temp/tweet-bg.jpg') center top;
+  background: url('../../Requi/jamm.jpg') center top;
   position: relative;
   padding: 100px 0;
 }
@@ -1974,7 +1975,10 @@ ul.features-list li {
 ----------------------*/
 
 #subscribe-section {
-  background: #f8f8f8;
+  background: url('../../Requi/int2.JPG') center top;
+  background-repeat: no-repeat;
+  background-size:cover;
+  position: relative;
   padding: 70px 0;
   border-top: 1px solid #EAEAEA;
   border-bottom: 1px solid #EAEAEA;

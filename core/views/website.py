@@ -19,6 +19,7 @@ class Website(View):
         else:
             name = Customer.objects.get(id=id)
             data['username'] = name.first_name
+            data['email'] = name.email
             feeds = Feedback.get_all_feeds()
             data['feeds'] = feeds
             print(feeds)
