@@ -140,5 +140,5 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
 # Optional SMTP authentication information for EMAIL_HOST.
-EMAIL_HOST_USER = 'krishnabdevtrial@gmail.com'
-EMAIL_HOST_PASSWORD = 'Krishnabdevtrial@'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''

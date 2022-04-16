@@ -19,6 +19,6 @@ def forgetpass(request):
             send_mail(subject, message, settings.EMAIL_HOST_USER, [email], fail_silently=False)
             return redirect('login')
         else:
-            messages.success(request, 'email_id does not exists')
+            messages.success(request, 'Email_id does not exists')
             return redirect('forgetpassword')
     return render(request,'forgetpassword.html')
