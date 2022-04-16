@@ -40,7 +40,7 @@ class Cart(View):
             order_currency = 'INR'
 
             client = razorpay.Client(
-                auth=("rzp_test_8iHfzks7PIBuoS", "jl9v56pX5P4xZWxrvV2O2SVI"))
+                auth=("", ""))
 
             payment = client.order.create({'amount': amount, 'currency': 'INR',
                                            'payment_capture': '1'})
