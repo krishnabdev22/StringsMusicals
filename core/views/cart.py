@@ -30,6 +30,11 @@ class Cart(View):
 
         request.session['cart'] = cart
         print('cart : ', request.session['cart'])
+
+
+
+
+
         return redirect(request.META['HTTP_REFERER'])
 
     def get(self, request):

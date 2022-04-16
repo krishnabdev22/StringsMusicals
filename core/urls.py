@@ -1,6 +1,5 @@
-from django.contrib import admin
 from django.urls import path
-from .views import website, index, signup, login, cart, checkout, orders, otp, feedback
+from .views import website, index, signup, login, cart, checkout, orders, otp, feedback,forgetpassword
 urlpatterns = [
     path('',website.Website.as_view(),name='website'),
     path('shop/',index.Index.as_view(),name='index'),
@@ -11,5 +10,6 @@ urlpatterns = [
     path('checkout',checkout.Checkout.as_view() , name='checkout'),
     path('orders', orders.OrderView.as_view(), name='orders'),
     path('otpVerify/<str:email>', otp.otpVerify, name='otpVerify_url'),
-    path('feed', feedback.feed, name = 'feed')
+    path('feed', feedback.feed, name = 'feed'),
+    path('forgetpassword',forgetpassword.forgetpass, name='forgetpassword')
 ]
