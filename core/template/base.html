@@ -73,7 +73,7 @@
             <!-- <li><a href="{% url 'website' %}#subscribe-section">Subscribe</a></li> -->
             <!-- <li><a href="{% url 'website' %}#contact-section">Contact</a></li> -->
             {% if request.session.customer %}
-            <li><a href="{% url 'cart' %}" target="_blank">Cart
+            <li><a href="{% url 'cart' %}" target="_blank">My Cart
               <i class="fas fa fa-shopping-cart fa-lg"></i>
               <span class="cart-basket d-flex align-items-center justify-content-center">
                 {{request.session.cart.keys|length}}

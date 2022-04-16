@@ -2,8 +2,8 @@ from django.shortcuts import render,redirect
 from django.views import View
 from ..models.customer import Customer
 from ..models.product import Product
-
-
+from django.views.decorators.csrf import csrf_exempt
+import razorpay
 
 class Cart(View):
 
@@ -30,12 +30,31 @@ class Cart(View):
 
         request.session['cart'] = cart
         print('cart : ', request.session['cart'])
+        # Razorpay
+
+        if request.method == "POST":
 
 
+            name = request.POST.get('name')
+            amount = 50000
+            order_currency = 'INR'
+
+            client = razorpay.Client(
+                auth=("rzp_test_8iHfzks7PIBuoS", "jl9v56pX5P4xZWxrvV2O2SVI"))
+
+            payment = client.order.create({'amount': amount, 'currency': 'INR',
+                                           'payment_capture': '1'})
 
 
+        # Razorpay End
 
         return redirect(request.META['HTTP_REFERER'])
+
+    # @csrf_exempt
+    # def success(self, request):
+    #     # return redirect(request.META['HTTP_REFERER'])
+    #
+    #     return redirect('checkout')
 
     def get(self, request):
         ids = list(request.session.get('cart').keys())

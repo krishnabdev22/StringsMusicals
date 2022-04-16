@@ -282,10 +282,11 @@
                      <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;</td>
                      <td>
                  <!-- <h4 style="align:center">{{product|cart_quantity:request.session.cart}} in cart</h4> -->
+                 <a href="{% url 'cart' %}">
                  <i class="fas fa fa-shopping-cart fa-lg"></i>
               <span class="cart-basket d-flex align-items-center justify-content-center">
                {{product|cart_quantity:request.session.cart}}
-              </span>
+              </span></a>
                </td>
             </tr>
                   </table>

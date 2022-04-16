@@ -11,5 +11,6 @@ urlpatterns = [
     path('orders', orders.OrderView.as_view(), name='orders'),
     path('otpVerify/<str:email>', otp.otpVerify, name='otpVerify_url'),
     path('feed', feedback.feed, name = 'feed'),
-    path('forgetpassword',forgetpassword.forgetpass, name='forgetpassword')
+    path('forgetpassword',forgetpassword.forgetpass, name='forgetpassword'),
+    # path('success', cart.Cart.success, name = 'success')
 ]
